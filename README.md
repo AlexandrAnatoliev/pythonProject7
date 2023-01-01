@@ -48,7 +48,7 @@ from config import token, channel
 
 ```python
 # Загружаем список шуток
-f = open('fun.txt', 'r', encoding='UTF-8')
+f = open('recipes.txt', 'r', encoding='UTF-8')
 jokes = f.read().split('\n')
 f.close()
 

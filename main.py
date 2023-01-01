@@ -28,7 +28,7 @@ bot = telebot.TeleBot(token)
 CHANNEL_NAME = channel
 
 # Загружаем список рецептов
-f = open('fun.txt', 'r', encoding='UTF-8')
+f = open('recipes.txt', 'r', encoding='UTF-8')
 jokes = f.read().split('\n\n')
 f.close()
 
