@@ -17,10 +17,6 @@ from multiprocessing import Process
 
 from config import token, channel
 
-# убрать токены
-#token = "5976923177:AAE37XmrmAw7Ci5vsjPxBfKfiqS91NzcBvI"
-#channel = '@RecipesFromHolodilnika'
-
 # Создаем бота
 bot = telebot.TeleBot(token)
 
