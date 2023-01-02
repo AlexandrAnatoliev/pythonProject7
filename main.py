@@ -15,7 +15,7 @@ import datetime
 import schedule
 from multiprocessing import Process
 
-# from config import token, channel
+#from config import token, channel
 
 # убрать токены
 token = "5976923177:AAE37XmrmAw7Ci5vsjPxBfKfiqS91NzcBvI"
@@ -29,7 +29,7 @@ CHANNEL_NAME = channel
 
 # Загружаем список рецептов
 f = open('recipes.txt', 'r', encoding='UTF-8')
-jokes = f.read().split('\n\n')
+jokes = f.read().split('\n\n\n')
 f.close()
 
 # Загружаем список утренних приветствий
