@@ -15,11 +15,11 @@ import datetime
 import schedule
 from multiprocessing import Process
 
-#from config import token, channel
+from config import token, channel
 
 # убрать токены
-token = "5976923177:AAE37XmrmAw7Ci5vsjPxBfKfiqS91NzcBvI"
-channel = '@RecipesFromHolodilnika'
+#token = "5976923177:AAE37XmrmAw7Ci5vsjPxBfKfiqS91NzcBvI"
+#channel = '@RecipesFromHolodilnika'
 
 # Создаем бота
 bot = telebot.TeleBot(token)
@@ -29,7 +29,7 @@ CHANNEL_NAME = channel
 
 # Загружаем список рецептов
 f = open('recipes.txt', 'r', encoding='UTF-8')
-jokes = f.read().split('\n\n\n')
+recipes = f.read().split('\n\n\n')
 f.close()
 
 # Загружаем список утренних приветствий
@@ -75,7 +75,7 @@ def first_process():
 
 def second_process():
     """
-    Посылаем случайный анекдот в чат.
+    Посылаем случайный рецепт в чат.
     :return:
     """
     work_bot_fl = True
@@ -87,7 +87,7 @@ def second_process():
 
         if morning < now < night:  # если день
             # таймер работы бота (от 1 до 3 часов)
-            bot.send_message(CHANNEL_NAME, random.choice(jokes))
+            bot.send_message(CHANNEL_NAME, random.choice(recipes))
             time.sleep(random.randint(3600, 10800))
 
 
