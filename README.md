@@ -4,8 +4,9 @@
 
 ## Описание
 
-Бот получает список рецептов из файла и случайный рецепт через случайные период времени постит в канал. Желает "Доброе утро"
- читателям канала
+Бот получает список рецептов из файла и случайный рецепт через случайные период времени постит в канал. Желает "Доброе
+утро"
+читателям канала
 
 ## Требования
 
@@ -41,14 +42,14 @@ from config import token, channel
 
 ## Примеры использования
 
-#### Загружаем список рецептов, утренних приветствий 
+#### Загружаем список рецептов, утренних приветствий
 
 Указываем название текстового файла с рецептами, 'r' - чтение текста, кодировку текта 'UTF-8'
 Рецепты в текстовом файле разделены двумя пустыми строками (\n\n\n)
 
 ```python
 # Загружаем список рецептов
-f = open('recipes.txt', 'r', encoding='UTF-8')
+f = open('recipes1.txt', 'r', encoding='UTF-8')
 recipes = f.read().split('\n\n\n')
 f.close()
 
@@ -56,6 +57,17 @@ f.close()
 m = open('morning_text.txt', 'r', encoding='UTF-8')
 good_morning = m.read().split('\n\n')
 m.close()
+```
+
+#### Выдает случайный список рецептов из заданных
+
+```python
+def random_recipe():
+    lst_nomber = random.randint(1, 2)
+    if lst_nomber == 1:
+        return recipes1
+    else:
+        return recipes2
 ```
 
 #### Выставляем время начала работы бота "morning" и окончания "night", чтобы сообщения не будили по ночам
@@ -75,7 +87,6 @@ while work_bot_fl:
 def wish_morning():
     bot.send_message(CHANNEL_NAME, random.choice(good_morning))
 ```
-
 
 #### Каждое утро "07:08" посылать сообщение в чат. ВАЖНО! формат времени "07:08", а не "7:08"!
 
@@ -101,6 +112,7 @@ def second_process():
         night = datetime.time(23, 45, 0)  # время окончания работы бота
 
         if morning < now < night:  # если день
+            recipes = random_recipe()  # выбираем случайный список рецептов
             # таймер работы бота (от 1 до 3 часов)
             bot.send_message(CHANNEL_NAME, random.choice(recipes))
             time.sleep(random.randint(3600, 10800))
