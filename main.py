@@ -33,6 +33,46 @@ f = open('recipes2.txt', 'r', encoding='UTF-8')
 recipes2 = f.read().split('\n\n\n')
 f.close()
 
+# Загружаем список рецептов3
+f = open('recipes3.txt', 'r', encoding='UTF-8')
+recipes3 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов4
+f = open('recipes4.txt', 'r', encoding='UTF-8')
+recipes4 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов5
+f = open('recipes5.txt', 'r', encoding='UTF-8')
+recipes5 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов6
+f = open('recipes6.txt', 'r', encoding='UTF-8')
+recipes6 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов7
+f = open('recipes7.txt', 'r', encoding='UTF-8')
+recipes7 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов8
+f = open('recipes8.txt', 'r', encoding='UTF-8')
+recipes8 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов9
+f = open('recipes9.txt', 'r', encoding='UTF-8')
+recipes9 = f.read().split('\n\n\n')
+f.close()
+
+# Загружаем список рецептов10
+f = open('recipes10.txt', 'r', encoding='UTF-8')
+recipes10 = f.read().split('\n\n\n')
+f.close()
+
 # Загружаем список утренних приветствий
 m = open('morning_text.txt', 'r', encoding='UTF-8')
 good_morning = m.read().split('\n\n')
@@ -49,11 +89,27 @@ def random_recipe():
     Выдает случайный список рецептов из заданных
     :return: список рецептов
     """
-    lst_nomber = random.randint(1, 2)
+    lst_nomber = random.randint(1, 10)
     if lst_nomber == 1:
         return recipes1
-    else:
+    elif lst_nomber == 2:
         return recipes2
+    elif lst_nomber == 3:
+        return recipes3
+    elif lst_nomber == 4:
+        return recipes4
+    elif lst_nomber == 5:
+        return recipes5
+    elif lst_nomber == 6:
+        return recipes6
+    elif lst_nomber == 7:
+        return recipes7
+    elif lst_nomber == 8:
+        return recipes8
+    elif lst_nomber == 9:
+        return recipes9
+    else:
+        return recipes10
 
 
 def wish_morning():
@@ -95,13 +151,13 @@ def second_process():
         current_date_time = datetime.datetime.now()
         now = current_date_time.time()  # текущее время
         morning = datetime.time(7, 32, 0)  # время начала работы бота
-        night = datetime.time(23, 45, 0)  # время окончания работы бота
+        night = datetime.time(22, 45, 0)  # время окончания работы бота
 
         if morning < now < night:  # если день
             recipes = random_recipe()  # выбираем случайный список рецептов
-            # таймер работы бота (от 1 до 3 часов)
+            # таймер работы бота (от 1 до 5 часов)
             bot.send_message(CHANNEL_NAME, random.choice(recipes))
-            time.sleep(random.randint(3600, 10800))
+            time.sleep(random.randint(3600, 18000))
 
 
 if __name__ == '__main__':

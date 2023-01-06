@@ -78,7 +78,7 @@ while work_bot_fl:
     current_date_time = datetime.datetime.now()
     now = current_date_time.time()  # текущее время
     morning = datetime.time(7, 3, 0)  # время начала работы бота
-    night = datetime.time(23, 45, 0)  # время окончания работы бота
+    night = datetime.time(22, 45, 0)  # время окончания работы бота
 ```
 
 #### Посылаем случайную фразу из списка good_morning в канал CHANNEL_NAME
@@ -109,13 +109,13 @@ def second_process():
         current_date_time = datetime.datetime.now()
         now = current_date_time.time()  # текущее время
         morning = datetime.time(7, 32, 0)  # время начала работы бота
-        night = datetime.time(23, 45, 0)  # время окончания работы бота
+        night = datetime.time(22, 45, 0)  # время окончания работы бота
 
         if morning < now < night:  # если день
             recipes = random_recipe()  # выбираем случайный список рецептов
-            # таймер работы бота (от 1 до 3 часов)
+            # таймер работы бота (от 1 до 5 часов)
             bot.send_message(CHANNEL_NAME, random.choice(recipes))
-            time.sleep(random.randint(3600, 10800))
+            time.sleep(random.randint(3600, 18000))
 ```
 
 #### Запускаем два процесса параллельно
