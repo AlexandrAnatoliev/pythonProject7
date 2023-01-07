@@ -23,6 +23,11 @@ bot = telebot.TeleBot(token)
 # Адрес телеграм-канала, начинается с @
 CHANNEL_NAME = channel
 
+# Загружаем список с рекламными объявлениями из файла promotions.txt
+p = open('promotions.txt', 'r', encoding='UTF-8')
+prom_list = p.read().split('\n\n\n')
+p.close()
+
 # Загружаем список рецептов1
 f = open('recipes1.txt', 'r', encoding='UTF-8')
 recipes1 = f.read().split('\n\n\n')
@@ -154,9 +159,12 @@ def second_process():
         night = datetime.time(22, 45, 0)  # время окончания работы бота
 
         if morning < now < night:  # если день
+            promo = random.choice(prom_list)  # реклама
             recipes = random_recipe()  # выбираем случайный список рецептов
+            answer = random.choice(recipes)  # случайный рецепт
+            answer += '\n\n' + promo
             # таймер работы бота (от 1 до 5 часов)
-            bot.send_message(CHANNEL_NAME, random.choice(recipes))
+            bot.send_message(CHANNEL_NAME, answer)
             time.sleep(random.randint(3600, 18000))
 
 

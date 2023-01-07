@@ -42,12 +42,17 @@ from config import token, channel
 
 ## Примеры использования
 
-#### Загружаем список рецептов, утренних приветствий
+#### Загружаем список рекламы, рецептов, утренних приветствий
 
 Указываем название текстового файла с рецептами, 'r' - чтение текста, кодировку текта 'UTF-8'
 Рецепты в текстовом файле разделены двумя пустыми строками (\n\n\n)
 
 ```python
+# Загружаем список с рекламными объявлениями из файла promotions.txt
+p = open('promotions.txt', 'r', encoding='UTF-8')
+prom_list = p.read().split('\n\n\n')
+p.close()
+
 # Загружаем список рецептов
 f = open('recipes1.txt', 'r', encoding='UTF-8')
 recipes = f.read().split('\n\n\n')
@@ -112,9 +117,12 @@ def second_process():
         night = datetime.time(22, 45, 0)  # время окончания работы бота
 
         if morning < now < night:  # если день
+            promo = random.choice(prom_list)  # реклама
             recipes = random_recipe()  # выбираем случайный список рецептов
+            answer = random.choice(recipes)  # случайный рецепт
+            answer += '\n\n' + promo
             # таймер работы бота (от 1 до 5 часов)
-            bot.send_message(CHANNEL_NAME, random.choice(recipes))
+            bot.send_message(CHANNEL_NAME, answer)
             time.sleep(random.randint(3600, 18000))
 ```
 
