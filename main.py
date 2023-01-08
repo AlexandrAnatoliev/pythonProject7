@@ -24,7 +24,7 @@ bot = telebot.TeleBot(token)
 CHANNEL_NAME = channel
 try:
     # Загружаем список с рекламными объявлениями из файла promotions.txt
-    try:  # этот блок не прерывает работу программы todo записать в доки
+    try:  # этот блок не прерывает работу программы
         p = open('promotions.txt', 'r', encoding='UTF-8')
         prom_list = p.read().split('\n\n\n')
     finally:
@@ -108,7 +108,7 @@ try:
         m.close()
 except FileNotFoundError:
     print("Невозможно открыть файл")
-except:  # todo записать в док
+except:
     print("Ошибка при работе с файлами")
 
 
