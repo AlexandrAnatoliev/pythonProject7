@@ -17,7 +17,6 @@ from multiprocessing import Process
 
 from config import token, channel
 
-# Создаем бота
 bot = telebot.TeleBot(token)
 
 # Адрес телеграм-канала, начинается с @
