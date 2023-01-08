@@ -23,67 +23,94 @@ bot = telebot.TeleBot(token)
 # Адрес телеграм-канала, начинается с @
 CHANNEL_NAME = channel
 try:
-# Загружаем список с рекламными объявлениями из файла promotions.txt
-    p = open('promotions.txt', 'r', encoding='UTF-8')
-    prom_list = p.read().split('\n\n\n')
-    p.close()
+    # Загружаем список с рекламными объявлениями из файла promotions.txt
+    try:  # этот блок не прерывает работу программы todo записать в доки
+        p = open('promotions.txt', 'r', encoding='UTF-8')
+        prom_list = p.read().split('\n\n\n')
+    finally:
+        p.close()  # и закрывает открытый файл если он не прочитался
 
-# Загружаем список рецептов1
-    f = open('recipes1.txt', 'r', encoding='UTF-8')
-    recipes1 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов1
+    try:
+        f = open('recipes1.txt', 'r', encoding='UTF-8')
+        recipes1 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов2
-    f = open('recipes2.txt', 'r', encoding='UTF-8')
-    recipes2 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов2
+    try:
+        f = open('recipes2.txt', 'r', encoding='UTF-8')
+        recipes2 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов3
-    f = open('recipes3.txt', 'r', encoding='UTF-8')
-    recipes3 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов3
+    try:
+        f = open('recipes3.txt', 'r', encoding='UTF-8')
+        recipes3 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов4
-    f = open('recipes4.txt', 'r', encoding='UTF-8')
-    recipes4 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов4
+    try:
+        f = open('recipes4.txt', 'r', encoding='UTF-8')
+        recipes4 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов5
-    f = open('recipes5.txt', 'r', encoding='UTF-8')
-    recipes5 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов5
+    try:
+        f = open('recipes5.txt', 'r', encoding='UTF-8')
+        recipes5 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов6
-    f = open('recipes6.txt', 'r', encoding='UTF-8')
-    recipes6 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов6
+    try:
+        f = open('recipes6.txt', 'r', encoding='UTF-8')
+        recipes6 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов7
-    f = open('recipes7.txt', 'r', encoding='UTF-8')
-    recipes7 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов7
+    try:
+        f = open('recipes7.txt', 'r', encoding='UTF-8')
+        recipes7 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов8
-    f = open('recipes8.txt', 'r', encoding='UTF-8')
-    recipes8 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов8
+    try:
+        f = open('recipes8.txt', 'r', encoding='UTF-8')
+        recipes8 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов9
-    f = open('recipes9.txt', 'r', encoding='UTF-8')
-    recipes9 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов9
+    try:
+        f = open('recipes9.txt', 'r', encoding='UTF-8')
+        recipes9 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список рецептов10
-    f = open('recipes10.txt', 'r', encoding='UTF-8')
-    recipes10 = f.read().split('\n\n\n')
-    f.close()
+    # Загружаем список рецептов10
+    try:
+        f = open('recipes10.txt', 'r', encoding='UTF-8')
+        recipes10 = f.read().split('\n\n\n')
+    finally:
+        f.close()
 
-# Загружаем список утренних приветствий
-    m = open('morning_text.txt', 'r', encoding='UTF-8')
-    good_morning = m.read().split('\n\n')
-    m.close()
-except:
+    # Загружаем список утренних приветствий
+    try:
+        m = open('morning_text.txt', 'r', encoding='UTF-8')
+        good_morning = m.read().split('\n\n')
+    finally:
+        m.close()
+except FileNotFoundError:
+    print("Невозможно открыть файл")
+except:  # todo записать в док
     print("Ошибка при работе с файлами")
+
 
 # Загружаем список вечерних пожеланий
 # n = open('nigth_text.txt', 'r', encoding='UTF-8')
