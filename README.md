@@ -153,7 +153,7 @@ if __name__ == '__main__':
 ```python
 try:
 except FileNotFoundError:
-    print("Невозможно открыть файл")
+  print("Невозможно открыть файл")
 except:
-    print("Ошибка при работе с файлами")
+  print("Ошибка при работе с файлами")
 ```
