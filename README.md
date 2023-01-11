@@ -111,19 +111,22 @@ def first_process():
 def second_process():
     work_bot_fl = True
     while work_bot_fl:
+
         current_date_time = datetime.datetime.now()
         now = current_date_time.time()  # текущее время
         morning = datetime.time(7, 32, 0)  # время начала работы бота
-        night = datetime.time(22, 45, 0)  # время окончания работы бота
+        night = datetime.time(18, 45, 0)  # время окончания работы бота
 
         if morning < now < night:  # если день
+            print("Бот работает (день)") # проверка бота 
+            time.sleep(random.randint(60, 7200))  # c 7 до 9 самое популярное время для постов 
             promo = random.choice(prom_list)  # реклама
             recipes = random_recipe()  # выбираем случайный список рецептов
             answer = random.choice(recipes)  # случайный рецепт
             answer += '\n\n' + promo
             # таймер работы бота (от 1 до 5 часов)
             bot.send_message(CHANNEL_NAME, answer)
-            time.sleep(random.randint(3600, 18000))
+            time.sleep(random.randint(16200, 32400)) # один-два поста в день достаточно для дзен 
 ```
 
 #### Запускаем два процесса параллельно
