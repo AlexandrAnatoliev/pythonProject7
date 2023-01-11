@@ -197,9 +197,9 @@ def second_process():
 
 if __name__ == '__main__':
     # Запускаем два процесса параллельно
-    p1 = Process(target=first_process, daemon=True)
+    # p1 = Process(target=first_process, daemon=True)
     p2 = Process(target=second_process, daemon=True)
-    p1.start()
+    # p1.start()
     p2.start()
-    p1.join()
+    # p1.join()
     p2.join()
