@@ -173,7 +173,7 @@ def first_process():
         time.sleep(1)
 
 
-def second_process():
+def second_process(): #todo отразить в документации изменения
     """
     Посылаем случайный рецепт в чат.
     :return: Строка с рецептом.
@@ -183,16 +183,18 @@ def second_process():
         current_date_time = datetime.datetime.now()
         now = current_date_time.time()  # текущее время
         morning = datetime.time(7, 32, 0)  # время начала работы бота
-        night = datetime.time(22, 45, 0)  # время окончания работы бота
+        night = datetime.time(22, 45, 0)  # время окончания работы бота todo уменьшить время до 1800
 
         if morning < now < night:  # если день
+            print("Бот работает") # проверка бота todo
+            time.sleep(random.randint(60, 7200))  # c 7 до 9 самое популярное время для постов todo
             promo = random.choice(prom_list)  # реклама
             recipes = random_recipe()  # выбираем случайный список рецептов
             answer = random.choice(recipes)  # случайный рецепт
             answer += '\n\n' + promo
             # таймер работы бота (от 1 до 5 часов)
             bot.send_message(CHANNEL_NAME, answer)
-            time.sleep(random.randint(3600, 18000))
+            time.sleep(random.randint(16200, 32400)) # один-два поста в день достаточно для дзен todo
 
 
 if __name__ == '__main__':
